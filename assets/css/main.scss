@@ -1,0 +1,230 @@
+//Fonts
+$popins: 'Poppins',
+sans-serif;
+
+//Colors
+$black: #000000;
+$white: #FFFFFF;
+$gray1: #C8D6E5;
+$gray2: #8395A7;
+$gray3: #576574;
+$gray4: #222F3E;
+
+$purple: #6c5ce7;
+
+
+
+//Mixins
+@mixin prefix($property, $value) {
+    //$vendors: 'webkit moz ms o';
+    $vendors: webkit moz ms o;
+    $default: true;
+
+    // -moz-$property: $value;
+    // -webkit-$property: $value;
+    // -o-$property: $value;
+    // -ms-$property: $value;
+    // property: $value
+    @if $vendors {
+        @each $vendor in $vendors {
+            #{"-" + $vendor + "-" + $property}: #{$value};
+        }
+    }
+
+    @if $default {
+        #{$property}: #{$value};
+    }
+}
+
+@mixin transition($time) {
+    @include prefix(transition, all $time);
+}
+
+@mixin shadow($x, $y, $spread, $color, $opacity) {
+    @include prefix(box-shadow, $x $y $spread 0px rgba($color, $opacity));
+}
+
+@mixin bradius($size) {
+    @include prefix(border-radius, $size + px);
+}
+
+@mixin font-size($size) {
+    $base: 16;
+    font-size: $size + px; // fallback for old browsers
+    font-size: ($size / $base) * 1rem;
+}
+
+@mixin gradient($angle, $color1, $color2) {
+    @include prefix(background, linear-gradient($angle, $color1, $color2) fixed);
+}
+
+* {
+    box-sizing: border-box;
+    color: $gray4;
+
+    input:focus,
+    textarea:focus,
+    select:focus,
+    *:focus {
+        outline: none;
+    }
+}
+
+body {
+    margin: 0px;
+    padding: 0px;
+    font-family: $popins, Arial, Helvetica, sans-serif !important;
+    background: $gray4;
+}
+
+#screenRes {
+    font-family: Arial, Helvetica, sans-serif;
+    @include font-size(14);
+    color: red;
+    position: fixed;
+    z-index: 50;
+    //display: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+span {
+    margin: 0px;
+    @include font-size(16);
+}
+
+a {
+    text-decoration: none;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0px;
+    padding: 0px;
+
+    li {
+        display: inline-block;
+    }
+}
+
+.container {
+    width: 96%;
+    max-width: 1200px;
+    margin: 0px auto;
+    position: relative;
+}
+
+.container-f {
+    width: 100%;
+    margin: 0px auto;
+    position: relative;
+}
+
+.col {
+    width: 100%;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: transparentize($black, .2);
+    z-index: 20;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    @include prefix(transform, translate(-50%, -50%));
+    width: 90%;
+    max-width: 500px;
+
+    #textoIngresado,
+    #textoBonito {
+        position: relative;
+        width: 100%;
+        display: block;
+        @include font-size(16);
+        color: $gray2;
+        padding: 15px 30px;
+        border: 0px;
+        @include bradius(10);
+        @include transition(.2s);
+        z-index: 5;
+    }
+
+    #textoIngresado {
+        &:focus {
+            color: $purple;
+            @include shadow(0px, 10px, 40px, $black, .1);
+        }
+    }
+
+    #textoBonito {
+        position: absolute;
+        top: 0%;
+        border: 1px solid $purple;
+        height: auto;
+        max-height: 300px;
+        overflow-y: scroll;
+        z-index: 0;
+        opacity: 0;
+    }
+}
+
+button {
+    position: absolute;
+    top: 170%;
+    right: -8%;
+    @include prefix(transform, translate(-50%, -50%));
+    z-index: 10;
+    width: 40px;
+    height: 40px;
+    border: none;
+    @include bradius(40);
+    background: $purple;
+    cursor: pointer;
+    @include transition(.2s);
+
+    svg {
+        width: 20px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        @include prefix(transform, translate(-50%, -50%));
+
+        .a {
+            fill: none;
+            stroke: $white;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            stroke-width: 3px;
+        }
+    }
+
+    &:hover {
+        background: lighten($purple, 10);
+    }
+}
+
+@media (max-width: 700px) {
+    .content {
+        top: 10%;
+
+        #textoBonito {
+            max-height: 170px;
+        }
+    }
+}

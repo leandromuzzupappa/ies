@@ -1,0 +1,201 @@
+* {
+  box-sizing: border-box;
+  color: #222F3E;
+}
+
+* input:focus,
+* textarea:focus,
+* select:focus,
+* *:focus {
+  outline: none;
+}
+
+body {
+  margin: 0px;
+  padding: 0px;
+  font-family: "Poppins", sans-serif, Arial, Helvetica, sans-serif !important;
+  background: #222F3E;
+}
+
+#screenRes {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  font-size: 0.875rem;
+  color: red;
+  position: fixed;
+  z-index: 50;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+span {
+  margin: 0px;
+  font-size: 16px;
+  font-size: 1rem;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0px;
+  padding: 0px;
+}
+
+ul li {
+  display: inline-block;
+}
+
+.container {
+  width: 96%;
+  max-width: 1200px;
+  margin: 0px auto;
+  position: relative;
+}
+
+.container-f {
+  width: 100%;
+  margin: 0px auto;
+  position: relative;
+}
+
+.col {
+  width: 100%;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 20;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  width: 90%;
+  max-width: 500px;
+}
+
+.content #textoIngresado,
+.content #textoBonito {
+  position: relative;
+  width: 100%;
+  display: block;
+  font-size: 16px;
+  font-size: 1rem;
+  color: #8395A7;
+  padding: 15px 30px;
+  border: 0px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+  border-radius: 10px;
+  -webkit-transition: all 0.2s;
+  -moz-transition: all 0.2s;
+  -ms-transition: all 0.2s;
+  -o-transition: all 0.2s;
+  transition: all 0.2s;
+  z-index: 5;
+}
+
+.content #textoIngresado:focus {
+  color: #6c5ce7;
+  -webkit-box-shadow: 0px 10px 40px 0px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 0px 10px 40px 0px rgba(0, 0, 0, 0.1);
+  -ms-box-shadow: 0px 10px 40px 0px rgba(0, 0, 0, 0.1);
+  -o-box-shadow: 0px 10px 40px 0px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 10px 40px 0px rgba(0, 0, 0, 0.1);
+}
+
+.content #textoBonito {
+  position: absolute;
+  top: 0%;
+  border: 1px solid #6c5ce7;
+  height: auto;
+  max-height: 300px;
+  overflow-y: scroll;
+  z-index: 0;
+  opacity: 0;
+}
+
+button {
+  position: absolute;
+  top: 170%;
+  right: -8%;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  width: 40px;
+  height: 40px;
+  border: none;
+  -webkit-border-radius: 40px;
+  -moz-border-radius: 40px;
+  -ms-border-radius: 40px;
+  -o-border-radius: 40px;
+  border-radius: 40px;
+  background: #6c5ce7;
+  cursor: pointer;
+  -webkit-transition: all 0.2s;
+  -moz-transition: all 0.2s;
+  -ms-transition: all 0.2s;
+  -o-transition: all 0.2s;
+  transition: all 0.2s;
+}
+
+button svg {
+  width: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+button svg .a {
+  fill: none;
+  stroke: #FFFFFF;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 3px;
+}
+
+button:hover {
+  background: #9488ee;
+}
+
+@media (max-width: 700px) {
+  .content {
+    top: 10%;
+  }
+  .content #textoBonito {
+    max-height: 170px;
+  }
+}
